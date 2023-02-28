@@ -7,17 +7,16 @@ Configuration to make Linux run smoothly on the Lenovo Thinkpad x240
 Background
 ==========
 
-I have an x240 with FHD touchscreen display that I will be running Linux on. I am using this public repo as a place to put all the configuration and scripts I will be using to get Linux running well on my x240 lapotop, in hopes that it might be useful to others or maybe others would contribute so we have a spot to gather the ideas on getting everything working correctly.
+I have an x240 with 1366x768 TN panel display that I am running Linux on. I am using this public repo as a place to put all the configuration and scripts I will be using to get Linux running well on my x240 lapotop, in hopes that it might be useful to others or maybe others would contribute so we have a spot to gather the ideas on getting everything working correctly.
 
+credits goes to darkstego for making the touchpad configs, I forked this seeing as that repo havent been touched for a long time
 
 Distro Installation
 ===================
 
-I am running SolydK (amd64) with kernel version 3.11.10, Xorg 1.14.5. Installation required running the UEFI in legacy (BIOS) mode to enable the install. After that everything went smoothly. 
+I am running Manjaro KDE (amd64) with kernel version 6.1.12-1, Xorg 11.0. Installation directly using UEFI without secure boot works smoothly
 
-*TODO* Make linux boot through UEFI.
-
-High DPI Issues
+High DPI Issues (NOT NEEDED FOR 1366x768)
 ===============
 
 The screen dimensions and DPI were not reported correctly in xdpyinfo. Turns out Xorg uses a logical dpi of '96' instead of the physical dpi. This mimics the behaviour of other OSes since many websites and applications assume a 96 dpi and setting a higher dpi would not render these correctly.
@@ -29,12 +28,6 @@ If you would like Xorg to use the actual screen dpi then you will need to includ
   sudo mkdir /etc/X11/xorg.conf.d/
   sudo cp 90-monitor.conf /etc/X11/xorg.conf.d/
 ```
-
-Dual Battery
-============
-
-In some DEs (KDE for example) the power management settings sets the battery level to critical when it reaches 5%. This also happens to be when the second (built in) battery takes over. Under the default settings the laptop will hibernate on critical and never utilize the second battery. In order to get around this you need to set the critical battery level to 4% under the power managment settings.
-
 
 Touchpad Settings
 =================
